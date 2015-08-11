@@ -8,6 +8,10 @@ ViewEditUsers::ViewEditUsers(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("Total Prediction");
 
+    ui->headingLabel->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 45px;");
+    ui->subLabel->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 25px;");
+    ui->backButton->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 25px;");
+    ui->deleteButton->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 25px;");
 
     ui->infoTable->setEditTriggers(QAbstractItemView::NoEditTriggers);
 

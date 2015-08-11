@@ -8,6 +8,11 @@ ViewEditTests::ViewEditTests(QWidget *parent) :
     ui->setupUi(this);
     this->setWindowTitle("Total Prediction");
 
+    ui->headingLabel->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 45px;");
+    ui->calibrationsLabel->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 45px;");
+    ui->backButton->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 25px;");
+    ui->deleteButton->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 25px;");
+
 
     QDir dir(QDir::currentPath());
     foreach(QString file, dir.entryList())

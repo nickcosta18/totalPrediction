@@ -36,8 +36,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
    </property>
    <property name="text">
     <string>Cancel</string>
@@ -57,9 +60,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
-     <kerning>true</kerning>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
    </property>
    <property name="text">
     <string>Submit</string>
@@ -100,8 +105,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
    </property>
    <property name="plainText">
     <string>Type or copy and paste text into this box.</string>
@@ -118,14 +126,17 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
    </property>
    <property name="text">
     <string>Test Name:</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="headingLabel">
    <property name="geometry">
     <rect>
      <x>250</x>
@@ -136,12 +147,11 @@
    </property>
    <property name="font">
     <font>
-     <family>EA Sports Covers SC</family>
-     <pointsize>45</pointsize>
+     <family>:/resources/EASports.ttf</family>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(48, 76, 135)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Create New Test</string>

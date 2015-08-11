@@ -25,7 +25,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="headingLabel">
    <property name="geometry">
     <rect>
      <x>230</x>
@@ -41,14 +41,13 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(48, 76, 135)
-</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>View and Edit Data</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton">
+  <widget class="QPushButton" name="userButton">
    <property name="geometry">
     <rect>
      <x>110</x>
@@ -64,13 +63,13 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(48, 76, 135)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Users</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_2">
+  <widget class="QPushButton" name="testButton">
    <property name="geometry">
     <rect>
      <x>480</x>
@@ -86,13 +85,13 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(48, 76, 135)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Tests</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="backButton">
    <property name="geometry">
     <rect>
      <x>360</x>
@@ -108,7 +107,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(48, 76, 135)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Back</string>
@@ -118,7 +117,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton</sender>
+   <sender>userButton</sender>
    <signal>clicked()</signal>
    <receiver>ViewEditChoice</receiver>
    <slot>onUsers()</slot>
@@ -134,7 +133,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_2</sender>
+   <sender>testButton</sender>
    <signal>clicked()</signal>
    <receiver>ViewEditChoice</receiver>
    <slot>onTests()</slot>
@@ -150,7 +149,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_3</sender>
+   <sender>backButton</sender>
    <signal>clicked()</signal>
    <receiver>ViewEditChoice</receiver>
    <slot>onBack()</slot>

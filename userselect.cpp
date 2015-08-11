@@ -7,6 +7,11 @@ UserSelect::UserSelect(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowTitle("Total Prediction");
+    ui->headingLabel->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 45px;");
+    ui->subLabel1->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 30px;");
+    ui->subLabel2->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 30px;");
+
+
 
 
     connect(ui->existingCheck, SIGNAL(clicked(bool)), this, SLOT(toggled(bool)));

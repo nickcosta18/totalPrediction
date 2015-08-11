@@ -36,10 +36,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>75</pointsize>
-     <weight>75</weight>
-     <bold>true</bold>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 75px;</string>
    </property>
   </widget>
   <widget class="QTextBrowser" name="textView">
@@ -53,8 +54,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
    </property>
   </widget>
   <widget class="QPushButton" name="pushButton">
@@ -68,8 +72,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
    </property>
    <property name="text">
     <string>Stop Test Early</string>
@@ -89,8 +96,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
    </property>
    <property name="text">
     <string>TEST PLACEHOLDER</string>
@@ -107,8 +117,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
    </property>
    <property name="text">
     <string>USER PLACEHOLDER</string>

@@ -9,6 +9,8 @@ CreateNew::CreateNew(QWidget *parent) :
     submit = false;
 
     this->setWindowTitle("Total Prediction");
+
+    ui->headingLabel->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 45px;");
 }
 
 CreateNew::~CreateNew()

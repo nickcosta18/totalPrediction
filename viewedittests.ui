@@ -36,11 +36,14 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
    </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
+   </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_3">
+  <widget class="QPushButton" name="backButton">
    <property name="geometry">
     <rect>
      <x>80</x>
@@ -56,13 +59,13 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(48, 76, 135)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Back</string>
    </property>
   </widget>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="headingLabel">
    <property name="geometry">
     <rect>
      <x>70</x>
@@ -78,7 +81,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(48, 76, 135)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Tests</string>
@@ -95,8 +98,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
    </property>
   </widget>
   <widget class="QLabel" name="calibrationsLabel">
@@ -115,13 +121,13 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(48, 76, 135)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Calibrations: ##</string>
    </property>
   </widget>
-  <widget class="QPushButton" name="pushButton_4">
+  <widget class="QPushButton" name="deleteButton">
    <property name="geometry">
     <rect>
      <x>300</x>
@@ -137,7 +143,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(48, 76, 135)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Delete File</string>
@@ -154,11 +160,12 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(213, 101, 52)
+    <string notr="true">color: rgb(213, 101, 52);
+font-size: 18px;
 </string>
    </property>
    <property name="text">
@@ -176,8 +183,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
    </property>
    <property name="text">
     <string>text is filled in automatically.</string>
@@ -194,8 +204,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
    </property>
    <property name="text">
     <string>All spaces are shown as underscores.</string>
@@ -205,7 +218,7 @@
  <resources/>
  <connections>
   <connection>
-   <sender>pushButton_3</sender>
+   <sender>backButton</sender>
    <signal>clicked()</signal>
    <receiver>ViewEditTests</receiver>
    <slot>onBack()</slot>
@@ -221,7 +234,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_4</sender>
+   <sender>deleteButton</sender>
    <signal>clicked()</signal>
    <receiver>ViewEditTests</receiver>
    <slot>onDelete()</slot>

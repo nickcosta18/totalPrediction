@@ -25,7 +25,7 @@
   <property name="windowTitle">
    <string>Dialog</string>
   </property>
-  <widget class="QLabel" name="label">
+  <widget class="QLabel" name="headingLabel">
    <property name="geometry">
     <rect>
      <x>290</x>
@@ -43,7 +43,7 @@
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: rgb(48, 76, 135)</string>
+    <string notr="true"/>
    </property>
    <property name="text">
     <string>Choose Test</string>
@@ -60,8 +60,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
    </property>
    <property name="text">
     <string>Cancel</string>
@@ -81,11 +84,12 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
    </property>
    <property name="styleSheet">
-    <string notr="true">color: black;</string>
+    <string notr="true">color: black;
+font-size: 18px;</string>
    </property>
    <property name="text">
     <string>Submit</string>
@@ -108,8 +112,11 @@
    </property>
    <property name="font">
     <font>
-     <pointsize>18</pointsize>
+     <pointsize>-1</pointsize>
     </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
    </property>
   </widget>
  </widget>

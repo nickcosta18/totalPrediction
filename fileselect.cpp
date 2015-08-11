@@ -6,6 +6,7 @@ FileSelect::FileSelect(QWidget *parent, QString user) :
     ui(new Ui::FileSelect)
 {
     ui->setupUi(this);
+    ui->headingLabel->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 45px;");
     this->setWindowTitle("Total Prediction");
 
     m_user = user;
