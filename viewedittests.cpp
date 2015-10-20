@@ -12,6 +12,7 @@ ViewEditTests::ViewEditTests(QWidget *parent) :
     ui->calibrationsLabel->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 45px;");
     ui->backButton->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 25px;");
     ui->deleteButton->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 25px;");
+    ui->exportButton->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 25px;");
 
 
     QDir dir(QDir::currentPath());
@@ -105,7 +106,7 @@ void ViewEditTests::onDelete()
 
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Stop?",
-                                     "Are you sure you want to delete this test?",
+                                     "Are you sure you want to delete this exercise?",
                                      QMessageBox::Yes | QMessageBox::No);
 
     if(reply == QMessageBox::Yes)
@@ -147,5 +148,76 @@ void ViewEditTests::onDelete()
             reject();
         }
     }
+
+}
+
+
+void ViewEditTests::onExport()
+{
+
+    QString oldFileText;
+    QString newFileText = "<>";
+
+    //combine _missing, _original, and _calibrated into one .txt file
+    QString fileBase = ui->testList->currentItem()->text();
+
+    QFile file( fileBase + "_original.txt" );
+    if (file.open(QFile::ReadOnly | QFile::Text))
+    {
+        QTextStream in(&file);
+        oldFileText = in.readAll();
+        newFileText.append(oldFileText);
+        newFileText.append("<>");
+        file.close();
+    }else{
+        QMessageBox::critical(this, "Error",
+                              "There was an error exporting this file.",
+                               QMessageBox::Ok);
+        return;
+    }
+
+    QFile file2( fileBase + "_missed.txt" );
+    if (file2.open(QFile::ReadOnly | QFile::Text))
+    {
+        QTextStream in(&file2);
+        oldFileText = in.readAll();
+        newFileText.append(oldFileText);
+        newFileText.append("<>");
+        file2.close();
+    }else{
+        QMessageBox::critical(this, "Error",
+                              "There was an error exporting this file.",
+                               QMessageBox::Ok);
+        return;
+    }
+
+    QFile file3( fileBase + "_calibrated.txt" );
+    if (file3.open(QFile::ReadOnly | QFile::Text))
+    {
+        QTextStream in(&file3);
+        oldFileText = in.readAll();
+        newFileText.append(oldFileText);
+        newFileText.append("<>");
+        file3.close();
+    }
+
+
+    QString desktop = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+    QFile file4( desktop + "/" + fileBase + ".txt" );
+    if ( file4.open(QIODevice::WriteOnly | QIODevice::Text) )
+    {
+        QTextStream stream( &file4 );
+        stream << newFileText;
+        file4.close();
+    }else{
+        QMessageBox::critical(this, "Error",
+                              "There was an error exporting this file.",
+                               QMessageBox::Ok);
+        return;
+    }
+
+    QMessageBox::information(this, "Success",
+                          "The file has succesfully been exported to your Desktop.",
+                           QMessageBox::Ok);
 
 }

@@ -62,24 +62,25 @@ void MainWindow::onCalibrateTestClick()
     else
     {
         m_msg = QMessageBox::critical(this, "Error",
-                                         "No tests have been created yet.",
+                                         "No exercises have been created yet.",
                                          QMessageBox::Ok);
     }
 }
 
 void MainWindow::onProctorTestClick()
 {
-    //Verify > 0 _calibrated.txt files exist
+    //Verify > 0  _original.txt files exist
     bool present = false;
     QDir dir(QDir::currentPath());
     foreach(QString file, dir.entryList())
     {
-        if(file.right(15) == "_calibrated.txt")
+        if(file.right(13) == "_original.txt")
         {
             present = true;
             break;
         }
     }
+
     if(present)
     {
         UserSelect *win = new UserSelect(this);
@@ -89,7 +90,7 @@ void MainWindow::onProctorTestClick()
     else
     {
         m_msg = QMessageBox::critical(this, "Error",
-                                         "No tests have been calibrated yet.",
+                                         "No exercises have been calibrated yet.",
                                          QMessageBox::Ok);
     }
 }
@@ -108,7 +109,14 @@ void MainWindow::onViewEditDataClick()
 void MainWindow::on_recv_newTest(QString name)
 {
     m_msg = QMessageBox::information(this, "Update",
-                                     "New Test '" + name + "' Created!",
+                                     "New Exercise '" + name + "' Created!",
+                                     QMessageBox::Ok);
+}
+
+void MainWindow::on_recv_importTest(QString name)
+{
+    m_msg = QMessageBox::information(this, "Update",
+                                     "Exercise '" + name + "' Imported!",
                                      QMessageBox::Ok);
 }
 
@@ -117,7 +125,7 @@ void MainWindow::on_recv_calibrated(QString name, int num)
 {
     qDebug() << num;
     m_msg = QMessageBox::information(this, "Update",
-                                     "Test '" + name + "' has been calibrated \
+                                     "Exercise '" + name + "' has been calibrated \
                                       based on " + QString::number(num) + " input(s)!",
                                      QMessageBox::Ok);
 }

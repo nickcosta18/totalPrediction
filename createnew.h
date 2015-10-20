@@ -5,6 +5,8 @@
 
 #include <QDir>
 #include <QMessageBox>
+#include <QFileDialog>
+#include <QStandardPaths>
 
 #include <QDebug>
 
@@ -29,9 +31,11 @@ private:
 private slots:
     void onCancel();
     void onSubmit();
+    void onImport();
 
 signals:
     void send_newTest(QString name);
+    void send_importTest(QString name);
 };
 
 #endif // CREATENEW_H

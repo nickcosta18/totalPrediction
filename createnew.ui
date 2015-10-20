@@ -82,8 +82,8 @@
   <widget class="QLineEdit" name="name">
    <property name="geometry">
     <rect>
-     <x>380</x>
-     <y>100</y>
+     <x>200</x>
+     <y>90</y>
      <width>201</width>
      <height>31</height>
     </rect>
@@ -118,10 +118,10 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>260</x>
-     <y>110</y>
-     <width>101</width>
-     <height>16</height>
+     <x>60</x>
+     <y>100</y>
+     <width>131</width>
+     <height>20</height>
     </rect>
    </property>
    <property name="font">
@@ -133,15 +133,15 @@
     <string notr="true">font-size: 18px;</string>
    </property>
    <property name="text">
-    <string>Test Name:</string>
+    <string>Exercise Name:</string>
    </property>
   </widget>
   <widget class="QLabel" name="headingLabel">
    <property name="geometry">
     <rect>
-     <x>250</x>
+     <x>60</x>
      <y>20</y>
-     <width>361</width>
+     <width>291</width>
      <height>61</height>
     </rect>
    </property>
@@ -154,7 +154,41 @@
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>Create New Test</string>
+    <string>Create New</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="headingLabel2">
+   <property name="geometry">
+    <rect>
+     <x>450</x>
+     <y>50</y>
+     <width>91</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>:/resources/EASports.ttf</family>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>OR</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="importButton">
+   <property name="geometry">
+    <rect>
+     <x>550</x>
+     <y>50</y>
+     <width>241</width>
+     <height>71</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string>Import Existing</string>
    </property>
   </widget>
  </widget>
@@ -192,9 +226,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>importButton</sender>
+   <signal>clicked()</signal>
+   <receiver>CreateNew</receiver>
+   <slot>onImport()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>763</x>
+     <y>54</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>727</x>
+     <y>24</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onCancel()</slot>
   <slot>onSubmit()</slot>
+  <slot>onImport()</slot>
  </slots>
 </ui>

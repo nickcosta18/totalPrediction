@@ -79,7 +79,7 @@
     <string notr="true">font-size: 18px;</string>
    </property>
    <property name="text">
-    <string>Stop Test Early</string>
+    <string>Stop Exercise Early</string>
    </property>
    <property name="autoDefault">
     <bool>false</bool>

@@ -7,6 +7,8 @@ FileSelect::FileSelect(QWidget *parent, QString user) :
 {
     ui->setupUi(this);
     ui->headingLabel->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 45px;");
+    ui->headingLabel2->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 30px;");
+    ui->headingLabel3->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 30px;");
     this->setWindowTitle("Total Prediction");
 
     m_user = user;
@@ -15,6 +17,11 @@ FileSelect::FileSelect(QWidget *parent, QString user) :
 
     if(m_isCalibrateMode)
     {
+        ui->headingLabel2->hide();
+        ui->headingLabel3->hide();
+        ui->fileList_original->hide();
+        ui->fileList->move(290, 125);
+
         foreach(QString file, dir.entryList())
         {
             if(file.right(13) == "_original.txt")
@@ -30,6 +37,14 @@ FileSelect::FileSelect(QWidget *parent, QString user) :
             if(file.right(15) == "_calibrated.txt")
             {
                 ui->fileList->addItem(file.left(file.length() - 15));
+            }
+        }
+
+        foreach(QString file, dir.entryList())
+        {
+            if(file.right(13) == "_original.txt")
+            {
+                ui->fileList_original->addItem(file.left(file.length() - 13));
             }
         }
     }
@@ -50,7 +65,18 @@ void FileSelect::onCancel()
 
 void FileSelect::onSubmit()
 {
-    QString file = ui->fileList->currentItem()->text();
+    QString file;
+    bool calib;
+    if (ui->fileList->hasFocus())
+    {
+        file = ui->fileList->currentItem()->text();
+        calib = true;
+    }
+    else
+    {
+        file = ui->fileList_original->currentItem()->text();
+        calib = false;
+    }
 
     if(m_isCalibrateMode)
     {
@@ -58,9 +84,16 @@ void FileSelect::onSubmit()
     }
     else
     {
-        file.append("_calibrated.txt");
+        //determine which one it came from
+        if(calib)
+        {
+            file.append("_calibrated.txt");
+        }
+        else
+        {
+            file.append("_original.txt");
+        }
     }
-
     TestWindow *win = new TestWindow(this->parentWidget(), file, m_user);
     win->show();
     win->startOnClick();

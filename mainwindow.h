@@ -41,6 +41,7 @@ private slots:
 
 public slots:
     void on_recv_newTest(QString name);
+    void on_recv_importTest(QString name);
     void on_recv_calibrated(QString name, int num);
 
 };

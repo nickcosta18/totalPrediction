@@ -11,6 +11,7 @@ TestWindow::TestWindow(QWidget *parent, QString fileName, QString user) :
 
     m_user = user;
     m_isCalibrateMode = (user == "");
+    m_isOriginalFile = (fileName.right(13) == "_original.txt");
 
     if(m_isCalibrateMode)
     {
@@ -19,12 +20,18 @@ TestWindow::TestWindow(QWidget *parent, QString fileName, QString user) :
     }
     else
     {
-        m_fileNameBase = fileName.left(fileName.length() - 15);
+        if(m_isOriginalFile)
+        {
+            m_fileNameBase = fileName.left(fileName.length() - 13);
+        }
+        else
+        {
+            m_fileNameBase = fileName.left(fileName.length() - 15);
+        }
         ui->userLabel->setText("User:  " + user);
-
     }
 
-    ui->testLabel->setText("Test:   " + m_fileNameBase);
+    ui->testLabel->setText("Exercise:   " + m_fileNameBase);
 
     QFile file(fileName);
     if (file.open(QFile::ReadOnly | QFile::Text))
@@ -50,7 +57,7 @@ TestWindow::~TestWindow()
 void TestWindow::startOnClick()
 {
 
-    m_msg = QMessageBox::information(this, "Begin Test", "Click Ok to begin test.",
+    m_msg = QMessageBox::information(this, "Begin Exercise", "Click Ok to begin the exercise.",
                                      QMessageBox::Ok);
 
     m_timer = startTimer(1000);
@@ -145,7 +152,7 @@ void TestWindow::reject()
 {
     QMessageBox::StandardButton reply;
     reply = QMessageBox::question(this, "Stop?",
-                                     "Are you sure you want to stop the test early and return to the main menu?",
+                                     "Are you sure you want to stop the exercise early and return to the main menu?",
                                      QMessageBox::Yes | QMessageBox::No);
 
     if(reply == QMessageBox::Yes)
@@ -163,7 +170,7 @@ void TestWindow::onFinish()
     {
 
         m_msg = QMessageBox::information(this, "Finished!",
-                                         "Test Complete!",
+                                         "Exercise Complete!",
                                          QMessageBox::Ok);
 
         this->parentWidget()->show();
@@ -251,7 +258,7 @@ void TestWindow::onFinish()
         float percentMissed = roundf(((float)m_misses / total) * 10000) / 100;
 
         m_msg = QMessageBox::information(this, "Finished!",
-                                         "Test Complete! \n\nCorrect: " + QString::number(m_correct) + '/'
+                                         "Exercise Complete! \n\nCorrect: " + QString::number(m_correct) + '/'
                                             + QString::number(total) + " -- "
                                             + QString::number(percentCorrect)
                                          +" %\nMissed: " + QString::number(m_misses) + '/'
@@ -266,7 +273,13 @@ void TestWindow::onFinish()
         if ( file4.open(QIODevice::Append) )
         {
             QTextStream stream( &file4 );
-            QString text = m_fileNameBase + "," + QString::number(m_correct) + "," + QString::number(m_misses) + "," + QString::number(total)
+            QString storeFile = m_fileNameBase;
+            if(m_isOriginalFile)
+            {
+                storeFile.append(" - Total");
+            }
+
+            QString text = storeFile + "," + QString::number(m_correct) + "," + QString::number(m_misses) + "," + QString::number(total)
                            + "," + QString::number(percentCorrect) + "," + QString::number(percentMissed) + "," + timeText + "," + local.toString() + "|";
             stream << text;
             file4.close();

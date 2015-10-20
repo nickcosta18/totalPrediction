@@ -6,6 +6,7 @@
 #include <QMessageBox>
 #include <QDialog>
 #include <QDir>
+#include <QStandardPaths>
 
 namespace Ui {
 class ViewEditTests;
@@ -26,6 +27,7 @@ private slots:
     void onBack();
     void reject();
 
+    void onExport();
     void onDelete();
 
     void on_testChange(QString fileBase);

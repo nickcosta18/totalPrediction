@@ -46,7 +46,7 @@
   <widget class="QPushButton" name="backButton">
    <property name="geometry">
     <rect>
-     <x>80</x>
+     <x>20</x>
      <y>470</y>
      <width>131</width>
      <height>61</height>
@@ -68,9 +68,9 @@
   <widget class="QLabel" name="headingLabel">
    <property name="geometry">
     <rect>
-     <x>70</x>
+     <x>40</x>
      <y>10</y>
-     <width>121</width>
+     <width>211</width>
      <height>51</height>
     </rect>
    </property>
@@ -84,7 +84,7 @@
     <string notr="true"/>
    </property>
    <property name="text">
-    <string>Tests</string>
+    <string>Exercises</string>
    </property>
   </widget>
   <widget class="QTextBrowser" name="textView">
@@ -130,7 +130,7 @@
   <widget class="QPushButton" name="deleteButton">
    <property name="geometry">
     <rect>
-     <x>300</x>
+     <x>360</x>
      <y>470</y>
      <width>191</width>
      <height>61</height>
@@ -152,8 +152,8 @@
   <widget class="QLabel" name="label_2">
    <property name="geometry">
     <rect>
-     <x>510</x>
-     <y>480</y>
+     <x>610</x>
+     <y>460</y>
      <width>71</width>
      <height>21</height>
     </rect>
@@ -175,9 +175,9 @@ font-size: 18px;
   <widget class="QLabel" name="label_3">
    <property name="geometry">
     <rect>
-     <x>580</x>
-     <y>480</y>
-     <width>231</width>
+     <x>680</x>
+     <y>460</y>
+     <width>111</width>
      <height>21</height>
     </rect>
    </property>
@@ -190,15 +190,15 @@ font-size: 18px;
     <string notr="true">font-size: 18px;</string>
    </property>
    <property name="text">
-    <string>text is filled in automatically.</string>
+    <string>text is filled in</string>
    </property>
   </widget>
   <widget class="QLabel" name="label_4">
    <property name="geometry">
     <rect>
-     <x>510</x>
+     <x>590</x>
      <y>500</y>
-     <width>311</width>
+     <width>221</width>
      <height>21</height>
     </rect>
    </property>
@@ -211,7 +211,50 @@ font-size: 18px;
     <string notr="true">font-size: 18px;</string>
    </property>
    <property name="text">
-    <string>All spaces are shown as underscores.</string>
+    <string>are shown as underscores.</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_5">
+   <property name="geometry">
+    <rect>
+     <x>600</x>
+     <y>480</y>
+     <width>211</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <pointsize>-1</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font-size: 18px;</string>
+   </property>
+   <property name="text">
+    <string>automatically. All spaces</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="exportButton">
+   <property name="geometry">
+    <rect>
+     <x>160</x>
+     <y>470</y>
+     <width>191</width>
+     <height>61</height>
+    </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>EA Sports Covers SC</family>
+     <pointsize>25</pointsize>
+    </font>
+   </property>
+   <property name="styleSheet">
+    <string notr="true"/>
+   </property>
+   <property name="text">
+    <string>Export File</string>
    </property>
   </widget>
  </widget>
@@ -240,7 +283,7 @@ font-size: 18px;
    <slot>onDelete()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>577</x>
+     <x>550</x>
      <y>502</y>
     </hint>
     <hint type="destinationlabel">
@@ -265,10 +308,27 @@ font-size: 18px;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>exportButton</sender>
+   <signal>clicked()</signal>
+   <receiver>ViewEditTests</receiver>
+   <slot>onExport()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>313</x>
+     <y>483</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>389</x>
+     <y>450</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>onBack()</slot>
   <slot>onDelete()</slot>
   <slot>on_testChange(QString)</slot>
+  <slot>onExport()</slot>
  </slots>
 </ui>

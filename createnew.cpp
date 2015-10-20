@@ -11,6 +11,9 @@ CreateNew::CreateNew(QWidget *parent) :
     this->setWindowTitle("Total Prediction");
 
     ui->headingLabel->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 45px;");
+    ui->headingLabel2->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 45px;");
+    ui->importButton->setStyleSheet("font-family: EA Sports Covers SC;color: rgb(48, 76, 135);font-size: 25px;");
+
 }
 
 CreateNew::~CreateNew()
@@ -33,7 +36,7 @@ void CreateNew::onSubmit()
             {
                 found = true;
                 reply = QMessageBox::question(this, "Overwrite?",
-                                                 "A test by this name already exists. Would you like to overwrite it?",
+                                                 "An exercise by this name already exists. Would you like to overwrite it?",
                                                  QMessageBox::Yes | QMessageBox::No);
 
                 break;
@@ -51,13 +54,13 @@ void CreateNew::onSubmit()
         if(ui->name->text() == "")
         {
             QMessageBox::critical(this, "Error",
-                                         "You must provide a name for the test.",
+                                         "You must provide a name for the exercise.",
                                          QMessageBox::Ok);
         }
         else
         {
             QMessageBox::critical(this, "Error",
-                                         "You must input text for this test",
+                                         "You must input text for this exercise.",
                                          QMessageBox::Ok);
         }
     }
@@ -124,6 +127,137 @@ void CreateNew::reject()
         emit send_newTest(ui->name->text());
     }
 
-
     delete this;
+}
+
+
+
+void CreateNew::onImport()
+{
+    QString desktop = QStandardPaths::writableLocation(QStandardPaths::DesktopLocation);
+    QString importFile = QFileDialog::getOpenFileName(this, "Import File", desktop, "Text File (*.txt)");
+
+    //On Cancel
+    if(importFile == "")
+    {
+        return;
+    }
+
+
+    QStringList pathParts = importFile.split("/");
+    QString fileBase = pathParts[pathParts.length() - 1].left(pathParts[pathParts.length() - 1].length() - 4);
+
+
+    //Check if name already exists
+    bool found = false;
+    QMessageBox::StandardButton reply = QMessageBox::No;
+    QDir dir(QDir::currentPath());
+    foreach(QString file, dir.entryList())
+    {
+        if(file.right(13) == "_original.txt" && file.left(file.length() - 13) == fileBase)
+        {
+            found = true;
+            reply = QMessageBox::question(this, "Overwrite?",
+                                             "An exercise by this name already exists. Would you like to overwrite it?",
+                                             QMessageBox::Yes | QMessageBox::No);
+
+            break;
+        }
+    }
+
+    if( found && reply == QMessageBox::No)
+    {
+        return;
+    }
+
+
+
+
+
+
+
+
+    QString fileText;
+
+    QFile file( importFile );
+    if (file.open(QFile::ReadOnly | QFile::Text))
+    {
+        QTextStream in(&file);
+        fileText = in.readAll();
+        file.close();
+    }else{
+        QMessageBox::critical(this, "Error",
+                              "There was an error importing this file.",
+                               QMessageBox::Ok);
+        return;
+    }
+
+    QStringList parts = fileText.split("<>");
+    bool calibratePresent;
+    if(parts.length() == 5)
+    {
+        calibratePresent = true;
+    }
+    else if(parts.length() == 4)
+    {
+        calibratePresent = false;
+    }
+    else
+    {
+        QMessageBox::critical(this, "Error",
+                              "There was an error importing this file.",
+                               QMessageBox::Ok);
+        return;
+    }
+
+    QFile file2( fileBase + "_original.txt" );
+    if ( file2.open(QIODevice::WriteOnly | QIODevice::Text) )
+    {
+        QTextStream stream( &file2 );
+        stream << parts[1];
+        file2.close();
+    }else{
+        QMessageBox::critical(this, "Error",
+                              "There was an error importing this file.",
+                               QMessageBox::Ok);
+        return;
+    }
+
+
+    QFile file3( fileBase + "_missed.txt" );
+    if ( file3.open(QIODevice::WriteOnly | QIODevice::Text) )
+    {
+        QTextStream stream( &file3 );
+        stream << parts[2];
+        file3.close();
+    }else{
+        QMessageBox::critical(this, "Error",
+                              "There was an error importing this file.",
+                               QMessageBox::Ok);
+        return;
+    }
+
+    if(calibratePresent)
+    {
+        QFile file3( fileBase + "_calibrated.txt" );
+        if ( file3.open(QIODevice::WriteOnly | QIODevice::Text) )
+        {
+            QTextStream stream( &file3 );
+            stream << parts[3];
+            file3.close();
+        }else{
+            QMessageBox::critical(this, "Error",
+                                  "There was an error importing this file.",
+                                   QMessageBox::Ok);
+            return;
+        }
+    }
+
+
+    this->parentWidget()->show();
+    this->hide();
+    connect(this, SIGNAL(send_importTest(QString)), this->parent(), SLOT(on_recv_importTest(QString)));
+    emit send_importTest(fileBase);
+    delete this;
+
 }
