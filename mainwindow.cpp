@@ -90,7 +90,7 @@ void MainWindow::onProctorTestClick()
     else
     {
         m_msg = QMessageBox::critical(this, "Error",
-                                         "No exercises have been calibrated yet.",
+                                         "No exercises have been created yet.",
                                          QMessageBox::Ok);
     }
 }
