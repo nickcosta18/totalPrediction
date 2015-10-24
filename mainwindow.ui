@@ -47,7 +47,7 @@
      <string>Create New Exercise</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="pushButton_2">
+   <widget class="QPushButton" name="calibrateButton">
     <property name="geometry">
      <rect>
       <x>230</x>
@@ -242,7 +242,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>pushButton_2</sender>
+   <sender>calibrateButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>onCalibrateTestClick()</slot>

@@ -22,6 +22,10 @@ FileSelect::FileSelect(QWidget *parent, QString user) :
         ui->fileList_original->hide();
         ui->fileList->move(290, 125);
 
+        ui->calibratedCheckbox->hide();
+        ui->originalCheckbox->hide();
+        ui->calibratedCheckbox->setChecked(true);
+
         foreach(QString file, dir.entryList())
         {
             if(file.right(13) == "_original.txt")
@@ -29,14 +33,20 @@ FileSelect::FileSelect(QWidget *parent, QString user) :
                 ui->fileList->addItem(file.left(file.length() - 13));
             }
         }
+
+        ui->fileList->setFocus();
+        ui->fileList->setCurrentRow(0);
     }
     else
     {
+        bool calibExists = false;
+
         foreach(QString file, dir.entryList())
         {
             if(file.right(15) == "_calibrated.txt")
             {
                 ui->fileList->addItem(file.left(file.length() - 15));
+                calibExists = true;
             }
         }
 
@@ -47,10 +57,34 @@ FileSelect::FileSelect(QWidget *parent, QString user) :
                 ui->fileList_original->addItem(file.left(file.length() - 13));
             }
         }
+
+        if(calibExists)
+        {
+            ui->originalCheckbox->setChecked(false);
+            ui->calibratedCheckbox->setChecked(true);
+
+            ui->fileList_original->setCurrentRow(0);
+
+            ui->fileList->setFocus();
+            ui->fileList->setCurrentRow(0);
+        }
+        else
+        {
+            ui->originalCheckbox->setChecked(true);
+            ui->calibratedCheckbox->setChecked(false);
+
+            ui->calibratedCheckbox->setEnabled(false);
+            ui->originalCheckbox->setEnabled(false);
+            ui->fileList->setEnabled(false);
+
+            ui->fileList_original->setFocus();
+            ui->fileList_original->setCurrentRow(0);
+        }
+
+        connect(ui->calibratedCheckbox, SIGNAL(clicked(bool)), this, SLOT(toggled(bool)));
+        connect(ui->originalCheckbox, SIGNAL(clicked(bool)), this, SLOT(toggled(bool)));
     }
 
-    ui->fileList->setFocus();
-    ui->fileList->setCurrentRow(0);
 }
 
 FileSelect::~FileSelect()
@@ -65,9 +99,10 @@ void FileSelect::onCancel()
 
 void FileSelect::onSubmit()
 {
+
     QString file;
     bool calib;
-    if (ui->fileList->hasFocus())
+    if (ui->calibratedCheckbox->isChecked())
     {
         file = ui->fileList->currentItem()->text();
         calib = true;
@@ -104,4 +139,34 @@ void FileSelect::reject()
 {
     this->parentWidget()->show();
     delete this;
+}
+
+void FileSelect::toggled(bool checked)
+{
+    if(QObject::sender() == ui->calibratedCheckbox)
+    {
+        if(checked)
+        {
+            ui->originalCheckbox->setChecked(false);
+            ui->fileList->setFocus();
+        }
+        else
+        {
+            ui->originalCheckbox->setChecked(true);
+            ui->fileList_original->setFocus();
+        }
+    }
+    else
+    {
+        if(checked)
+        {
+            ui->calibratedCheckbox->setChecked(false);
+            ui->fileList_original->setFocus();
+        }
+        else
+        {
+            ui->calibratedCheckbox->setChecked(true);
+            ui->fileList->setFocus();
+        }
+    }
 }

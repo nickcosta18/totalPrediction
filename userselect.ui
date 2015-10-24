@@ -185,7 +185,7 @@ font-size: 18px;</string>
   <widget class="QCheckBox" name="existingCheck">
    <property name="geometry">
     <rect>
-     <x>330</x>
+     <x>170</x>
      <y>170</y>
      <width>21</width>
      <height>20</height>
@@ -198,7 +198,7 @@ font-size: 18px;</string>
   <widget class="QCheckBox" name="newCheck">
    <property name="geometry">
     <rect>
-     <x>640</x>
+     <x>540</x>
      <y>170</y>
      <width>21</width>
      <height>20</height>

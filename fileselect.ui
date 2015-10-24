@@ -185,6 +185,32 @@ font-size: 18px;</string>
     <string>Calibrated</string>
    </property>
   </widget>
+  <widget class="QCheckBox" name="originalCheckbox">
+   <property name="geometry">
+    <rect>
+     <x>90</x>
+     <y>120</y>
+     <width>70</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QCheckBox" name="calibratedCheckbox">
+   <property name="geometry">
+    <rect>
+     <x>510</x>
+     <y>120</y>
+     <width>70</width>
+     <height>17</height>
+    </rect>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
  </widget>
  <resources/>
  <connections>
@@ -224,5 +250,6 @@ font-size: 18px;</string>
  <slots>
   <slot>onCancel()</slot>
   <slot>onSubmit()</slot>
+  <slot>onOriginalClicked()</slot>
  </slots>
 </ui>

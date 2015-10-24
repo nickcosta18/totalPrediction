@@ -8,6 +8,8 @@
 
 #include <QDebug>
 
+#include <QListWidget>
+
 namespace Ui {
 class FileSelect;
 }
@@ -28,6 +30,8 @@ private:
 private slots:
     void onCancel();
     void onSubmit();
+
+    void toggled(bool checked);
 
     void reject();
 };
