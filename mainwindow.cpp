@@ -125,7 +125,7 @@ void MainWindow::on_recv_calibrated(QString name, int num)
 {
     qDebug() << num;
     m_msg = QMessageBox::information(this, "Update",
-                                     "Exercise '" + name + "' has been calibrated \
-                                      based on " + QString::number(num) + " input(s)!",
+                                     "Exercise '" + name + "' has been calibrated "
+                                     + "based on " + QString::number(num) + " input(s)!",
                                      QMessageBox::Ok);
 }
