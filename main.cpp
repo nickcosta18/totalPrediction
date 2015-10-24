@@ -12,5 +12,6 @@ int main(int argc, char *argv[])
     QFontDatabase::addApplicationFont(":/resources/EASports.ttf");
 
 
+
     return a.exec();
 }
