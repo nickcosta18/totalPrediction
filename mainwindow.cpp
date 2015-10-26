@@ -25,9 +25,11 @@ void MainWindow::onInstructionsClick()
 {
 
     m_msg = QMessageBox::information(this, "Instructions",
-                                     "1) Create a test.\n"
-                                     "2) Calibrate the test.\n"
-                                     "3) Proctor the test to patients.\n",
+                                     "This application is intended to be used collaboratively by both physicians and their patients to assist with cognitive rehabilitation. Using a letter prediction exercise, this app allows the patient to continually guess the next letter in a text file, until the end is reached. \n\n"
+                                     "1) Create a new exercise, or import an existing one. Note that exercises are hosted at www.totalprediction.weebly.com. \n\n"
+                                     "2) Calibrate the exercise. Have a well-minded person complete the letter prediction exercise in order to calibrate the test based on their results. It is recommended that each test be calibrated 10 times. \n\n"
+                                     "3) Proctor the exercise to patients. Enter the name of the patient and choose the test to give them. Instruct them how to use the software by continually guessing the next letter until the exercise is complete. \n\n"
+                                     "4) You can view and edit information about the exercises you have created and patients with whom you have worked. You are also able to export exercises that you have created in order to share them with patients and other physicians.",
                                      QMessageBox::Ok);
 }
 
